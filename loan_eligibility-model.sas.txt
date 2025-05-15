@@ -1,0 +1,1028 @@
+/********************************************************
+Developer name: Miss. YOUSRA AHMED
+Job position: Data Scientist, APU SDN BHD
+Program name: mydapproject.sas
+Description: Loan application status prediction - 1 - 2 lines 
+Date first written: Mon,22-Jan-2024
+Date last updated: Mon,22-Jan-2024
+Folder name:  MY_DAP_FT_NOV_2023_TP74585
+Library name:  LIB74585
+ 
+/********************************************************
+
+/* SAS Codes to display the data dictionary of LIB74585,TRAINING_DS */
+
+PROC CONTENTS DATA = LIB74585.TRAINING_DS;
+
+RUN; 
+
+/* SAS Codes to display the data dictionary of LIB74585,TRAINING_DS */
+
+PROC SQL;
+
+DESCRIBE TABLE LIB74585.TRAINING_DS;
+
+RUN; 
+
+TITLE 'Figure no 9 - Univariate Analysis of the Categorical variable: GENDER';
+ 
+PROC FREQ DATA = LIB74585.TRAINING_DS;
+ 
+TABLE GENDER;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 3.0 IN HEIGHT = 4.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA = LIB74585.TRAINING_DS;
+ 
+VBAR GENDER;
+ 
+TITLE 'Figure no 9 - Univariate Analysis of the Ctegorical variable:GENDER';
+ 
+RUN;
+
+
+TITLE 'Figure no 10 - Univariate Analysis of the Categorical variable: MARITAL_STATUS';
+ 
+PROC FREQ DATA = LIB74585.TRAINING_DS;
+ 
+TABLE MARITAL_STATUS;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 3.0 IN HEIGHT = 4.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA = LIB74585.TRAINING_DS;
+ 
+VBAR MARITAL_STATUS;
+ 
+TITLE 'Figure no 10 - Univariate Analysis of the Ctegorical variable: MARITAL_STATUS';
+ 
+RUN;
+
+
+TITLE 'Figure no 11 - Univariate Analysis of the Categorical variable: QUALIFICATION';
+ 
+PROC FREQ DATA = LIB74585.TRAINING_DS;
+ 
+TABLE QUALIFICATION;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 3.0 IN HEIGHT = 4.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA = LIB74585.TRAINING_DS;
+ 
+VBAR QUALIFICATION;
+ 
+TITLE 'Figure no 11 - Univariate Analysis of the Ctegorical variable: QUALIFICATION';
+ 
+RUN;
+
+
+TITLE 'Figure no 12 - Univariate Analysis of the Categorical variable: EMPLOYMENT';
+ 
+PROC FREQ DATA = LIB74585.TRAINING_DS;
+ 
+TABLE EMPLOYMENT;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 3.0 IN HEIGHT = 4.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA = LIB74585.TRAINING_DS;
+ 
+VBAR EMPLOYMENT;
+ 
+TITLE 'Figure no 12 - Univariate Analysis of the Ctegorical variable: EMPLOYMENT';
+ 
+RUN;
+
+
+TITLE 'Figure no 13 - Univariate Analysis of the Categorical variable: LOAN_LOCATION';
+ 
+PROC FREQ DATA = LIB74585.TRAINING_DS;
+ 
+TABLE LOAN_LOCATION;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 3.0 IN HEIGHT = 4.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA = LIB74585.TRAINING_DS;
+ 
+VBAR LOAN_LOCATION;
+ 
+TITLE 'Figure no 13 - Univariate Analysis of the Ctegorical variable: LOAN_LOCATION';
+ 
+RUN;
+
+
+
+
+
+TITLE 'Figure no 15 - Univariate analysis of the continuous/numeric variable: LOAN_AMOUNT ';
+ 
+PROC MEANS DATA =  LIB74585.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+ 
+VAR loan_amount;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 4.0 IN HEIGHT = 3.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA =  LIB74585.TRAINING_DS;
+ 
+HISTOGRAM loan_amount;
+ 
+TITLE 'Figure number - Univariate analysis of the continuous/numeric variable: LOAN_AMOUNT';
+ 
+RUN;
+
+TITLE 'Figure no 15 - Univariate analysis of the continuous/numeric variable:  GUARANTEE_INCOME ';
+ 
+PROC MEANS DATA =  LIB74585.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+ 
+VAR GUARANTEE_INCOME;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 4.0 IN HEIGHT = 3.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA =  LIB74585.TRAINING_DS;
+ 
+HISTOGRAM  GUARANTEE_INCOME;
+ 
+TITLE 'Figure number - Univariate analysis of the continuous/numeric variable:GUARANTEE_INCOME';
+ 
+RUN;
+
+TITLE 'Figure no 15 - Univariate analysis of the continuous/numeric variable:  LOAN_HISTORY ';
+ 
+PROC MEANS DATA =  LIB74585.TRAINING_DS N NMISS MIN MAX MEAN MEDIAN STD;
+ 
+VAR LOAN_HISTORY;
+ 
+RUN;
+ 
+ODS GRAPHICS / RESET WIDTH = 4.0 IN HEIGHT = 3.0 IN IMAGEMAP;
+ 
+PROC SGPLOT DATA =  LIB74585.TRAINING_DS;
+ 
+HISTOGRAM LOAN_HISTORY;
+ 
+TITLE 'Figure number - Univariate analysis of the continuous/numeric variable:LOAN_HISTORY';
+ 
+RUN;
+
+TITLE1 'Figure no 18 - Bivatiate analysis of the variables: ';
+TITLE2 'Categorical variable[GENDER] vs Categorical variable[MARITAL_STATUS]';
+FOOTNOTE '-------END-----';
+ 
+PROC FREQ DATA =   LIB74585.TRAINING_DS;
+ 
+TABLE gender * marital_status/
+PLOTS = FREQPLOT( TWOWAY = STACKED SCALE = GROUPPCT );
+ 
+RUN;
+
+ 
+TITLE1 'Figure no 19 - Bivatiate analysis of the variables: ';
+
+TITLE2 'Categorical variable[GENDER] vs Categorical variable[LAON_APPROVAL_STATUS]';
+
+FOOTNOTE '-------END-----';
+ 
+PROC FREQ DATA =   LIB74585.TRAINING_DS;
+ 
+TABLE gender * loan_approval_status/
+
+PLOTS = FREQPLOT( TWOWAY = STACKED SCALE = GROUPPCT );
+ 
+RUN;
+
+
+TITLE1 'Figure 21: Bivatiate analysis of variables: ';
+TITLE2 'Categorical varibale[LOAN_LOCATION] vs Numeric/Continuous variable[LOAN_AMOUNT] '; 
+FOOTNOTE '-----End----';
+ 
+PROC MEANS DATA = LIB74585.TRAINING_DS;
+ 
+CLASS loan_location;  /* It is a Categorical variable*/
+VAR loan_amount; /* It is a Numeric/Continuous variable */
+ 
+RUN;
+
+/*********************************************************
+/* impute the missing values found in the categorical variable: MARITAL_STATUS*/
+
+TITLE1 'STEP 1: List the details of loan applicants who submitted';
+TITLE2 'their loan application without marital status';
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS e
+WHERE ( e.marital_status IS MiSSING OR e.marital_status eq '' );
+ 
+QUIT;
+
+
+TITLE1 'STEP 2: Count the number of loan applicants who submitted';
+TITLE2 'their loan application without marital status';
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of applicants'
+FROM LIB74585.TRAINING_DS e
+WHERE ( e.marital_status IS MiSSING OR e.marital_status eq '' );
+ 
+QUIT;
+
+
+
+/* STEP 3: Find the statistics and store the statistics in a dataset */
+
+PROC SQL;
+ 
+CREATE TABLE LIB74585.TRAINING_MS_STAT_DS AS
+
+SELECT e.marital_status AS marital_status,
+
+COUNT(*) AS counts
+
+FROM LIB74585.TRAINING_DS e
+
+WHERE ( e.marital_status IS NOT MiSSING OR e.marital_status ne '' )
+
+GROUP BY e.marital_status;
+ 
+QUIT;
+
+/* STEP 4: Find the Mod value */
+PROC SQL;
+ 
+SELECT tmso.marital_status AS mod_marital_status
+FROM LIB74585.TRAINING_MS_STAT_DS tmso
+WHERE tmso.counts eq ( SELECT MAX(tmsi.counts) Label = 'highest_count'
+                       FROM LIB74585.TRAINING_MS_STAT_DS tmsi );
+                      /* Above is a sub-program to find the highest count */
+QUIT;
+
+/* STEP 5: Make a backup of the dataset LIB74585.TRAINING_DS */
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS 
+SELECT *
+FROM LIB74585.TRAINING_DS;
+
+QIUT; 
+
+/* STEP 6: Impute the missing values found in the categorial variable - MARITAL_STATUS */
+PROC SQL;
+ 
+UPDATE LIB74585.TRAINING_DS
+SET marital_status = ( SELECT tmso.marital_status AS mod_marital_status
+                       FROM LIB74585.TRAINING_MS_STAT_DS tmso
+                       WHERE tmso.counts eq ( SELECT MAX(tmsi.counts) Label = 'highest_count'
+                                              FROM LIB74585.TRAINING_MS_STAT_DS tmsi ) ) 
+WHERE ( marital_status IS MISSING or marital_status eq '' );                                           /* Above is a sub-program to find the highest count */
+ 
+QUIT;
+
+TITLE1 'STEP 7: ( After i)List the details of loan applicants who submitted';
+TITLE2 'their loan application without marital status';
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS e
+WHERE ( e.marital_status IS MiSSING OR e.marital_status eq '' );
+ 
+QUIT;
+
+/*************************************************
+/* impute the missing values found in the categorical variable: FAMILY_MEMBERS*/
+
+TITLE1 'STEP 1: List the details of the loan applicants who submitted their loan application without family members count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.family_members IS MISSING or family_members eq '' );
+
+QUIT;
+
+TITLE1 'STEP 2: Count the number of loan applicants who submitted';
+TITLE2 'their loan application without family members count details';
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.family_members IS MiSSING OR family_members eq '' );
+ 
+QUIT;
+
+/* STEP 3: Find the statistics and store the statistics in a dataset */
+
+PROC SQL;
+ 
+CREATE TABLE LIB74585.TRAINING_FM_STAT_DS AS
+
+SELECT t.family_members AS family_members,
+
+COUNT(*) AS counts
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.family_members IS NOT MiSSING OR family_members ne '' )
+
+GROUP BY t.family_members;
+ 
+QUIT;
+
+
+TITLE 'STEP 4: Find the Mod value';
+ 
+PROC SQL;
+ 
+SELECT tfmo.family_members AS mod_family_members
+
+FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+
+WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+
+                       FROM LIB74585.TRAINING_FM_STAT_DS tfmi );
+
+                       /* Above is a sub-program to find the highest count */
+
+QUIT;
+
+/* STEP 5: Make a backup of the dataset LIB74585.TRAINING_DS */
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS 
+SELECT *
+FROM LIB74585.TRAINING_DS;
+
+QIUT; 
+
+TITLE 'STEP 6: Impute the missing values found in the categorical variable - family_members';
+ 
+PROC SQL;
+ 
+UPDATE LIB74585.TRAINING_DS
+SET family_members =  ( SELECT tfmo.family_members AS mod_family_members
+                        FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+                        WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+                                               FROM LIB74585.TRAINING_FM_STAT_DS tfmi ) )
+                                               /* Above is a sub-program to find the highest count */
+WHERE ( family_members IS MISSING or family_members eq '' );
+ 
+QUIT;
+
+TITLE1 'STEP 7: ( After Imputation) List the details of the loan applicants who submitted their loan application without family members count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.family_members IS MISSING or family_members eq '' );
+
+QUIT;
+
+/**************************************************************************************
+/* impute the missing values found in the categorical variable: GENDER*/
+
+TITLE1 'STEP 1: List the details of the loan applicants who submitted their loan application without gender count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.gender IS MISSING or gender eq '' );
+
+QUIT;
+
+TITLE1 'STEP 2: Count the number of loan applicants who submitted';
+TITLE2 'their loan application without gender count details';
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.gender IS MiSSING OR gender eq '' );
+ 
+QUIT;
+
+/* STEP 3: Find the statistics and store the statistics in a dataset */
+
+PROC SQL;
+ 
+CREATE TABLE LIB74585.TRAINING_FM_STAT_DS AS
+
+SELECT t.gender AS gender,
+
+COUNT(*) AS counts
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.gender IS NOT MiSSING OR gender ne '' )
+
+GROUP BY t.gender;
+ 
+QUIT;
+
+
+TITLE 'STEP 4: Find the Mod value';
+ 
+PROC SQL;
+ 
+SELECT tfmo.gender AS mod_gender
+
+FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+
+WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+
+                       FROM LIB74585.TRAINING_FM_STAT_DS tfmi );
+
+                       /* Above is a sub-program to find the highest count */
+
+QUIT;
+
+/* STEP 5: Make a backup of the dataset LIB74585.TRAINING_DS */
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS 
+SELECT *
+FROM LIB74585.TRAINING_DS;
+
+QIUT; 
+
+TITLE 'STEP 6: Impute the missing values found in the categorical variable -gender';
+ 
+PROC SQL;
+ 
+UPDATE LIB74585.TRAINING_DS
+SET gender =  ( SELECT tfmo.gender AS mod_gender
+                        FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+                        WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+                                               FROM LIB74585.TRAINING_FM_STAT_DS tfmi ) )
+                                               /* Above is a sub-program to find the highest count */
+WHERE ( gender IS MISSING or gender eq '' );
+ 
+QUIT;
+
+TITLE1 'STEP 7: ( After Imputation) List the details of the loan applicants who submitted their loan application without gender count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.gender IS MISSING or gender eq '' );
+
+QUIT;
+
+/**************************************************************************************
+/* impute the missing values found in the categorical variable: EMPLOYMENT*/
+
+TITLE1 'STEP 1: List the details of the loan applicants who submitted their loan application without Emoployment count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.employment IS MISSING or employment eq '' );
+
+QUIT;
+
+TITLE1 'STEP 2: Count the number of loan applicants who submitted';
+TITLE2 'their loan application without emoployment count details';
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.employment IS MiSSING OR employment eq '' );
+ 
+QUIT;
+
+/* STEP 3: Find the statistics and store the statistics in a dataset */
+
+PROC SQL;
+ 
+CREATE TABLE LIB74585.TRAINING_FM_STAT_DS AS
+
+SELECT t.employment AS employment,
+
+COUNT(*) AS counts
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.employment IS NOT MiSSING OR employment ne '' )
+
+GROUP BY t.employment;
+ 
+QUIT;
+
+
+TITLE 'STEP 4: Find the Mod value';
+ 
+PROC SQL;
+ 
+SELECT tfmo.employment AS mod_employment
+
+FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+
+WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+
+                       FROM LIB74585.TRAINING_FM_STAT_DS tfmi );
+
+                       /* Above is a sub-program to find the highest count */
+
+QUIT;
+
+/* STEP 5: Make a backup of the dataset LIB74585.TRAINING_DS */
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS 
+SELECT *
+FROM LIB74585.TRAINING_DS;
+
+QIUT; 
+
+TITLE 'STEP 6: Impute the missing values found in the categorical variable -emoployment';
+ 
+PROC SQL;
+ 
+UPDATE LIB74585.TRAINING_DS
+SET employment =  ( SELECT tfmo.employment AS mod_employment
+                        FROM LIB74585.TRAINING_FM_STAT_DS tfmo
+                        WHERE tfmo.counts eq ( SELECT MAX(tfmi.counts) AS highest_count
+                                               FROM LIB74585.TRAINING_FM_STAT_DS tfmi ) )
+                                               /* Above is a sub-program to find the highest count */
+WHERE ( employment IS MISSING or employment eq '' );
+ 
+QUIT;
+
+TITLE1 'STEP 7: ( After Imputation) List the details of the loan applicants who submitted their loan application without gender count details';
+ 
+PROC SQL;
+ 
+SELECT *
+
+FROM LIB74585.TRAINING_DS t
+
+WHERE ( t.employment IS MISSING or employment eq '' );
+
+QUIT;
+
+/*****************************************************************************
+/* impute the missing values found in the Continious variable: LOAN_AMOUNT*/
+/*****************************************************************************/
+
+TITLE 'STEP 1 - List the details of the loan applicants who submitted their loan applications without loan amount';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_amount IS MISSING or t.loan_amount eq . );
+ 
+QUIT;
+
+TITLE 'STEP 2 - Count the number of loan applicants who submitted their loan applications without loan amount';
+ 
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_amount IS MISSING or t.loan_amount eq . );
+ 
+QUIT;
+ 
+/* Make a backup copy of the dataset LIB74585.TRAINING_DS */
+
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS
+SELECT *
+FROM  LIB74585.TRAINING_DS;
+
+QUIT;
+
+/* STEP 4: Impute the missing values found in the variable - LOAN_AMOUNT */;
+ 
+PROC STDIZE DATA = LIB74585.TRAINING_DS REPONLY
+ 
+METHOD = MEAN OUT = LIB74585.TRAINING_DS; 
+VAR loan_amount;
+ 
+QUIT;
+
+TITLE 'STEP 5 - (After imputation) List the details of the loan applicants who submitted their loan applications without loan amount';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_amount IS MISSING or t.loan_amount eq . );
+ 
+QUIT;
+
+/* impute the missing values found in the Continious variable: LOAN_DURATION*/
+/*****************************************************************************/
+
+TITLE 'STEP 1 - List the details of the loan applicants who submitted their loan applications without loan duration';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_duration IS MISSING or t.loan_duration eq . );
+ 
+QUIT;
+
+TITLE 'STEP 2 - Count the number of loan applicants who submitted their loan applications without loan duration';
+ 
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_duration IS MISSING or t.loan_duration eq . );
+ 
+QUIT;
+ 
+/* Make a backup copy of the dataset LIB74585.TRAINING_DS */
+
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS
+SELECT *
+FROM  LIB74585.TRAINING_DS;
+
+QUIT;
+
+/* STEP 4: Impute the missing values found in the variable - LOAN_DURATION */;
+ 
+PROC STDIZE DATA = LIB74585.TRAINING_DS REPONLY
+ 
+METHOD = MEAN OUT = LIB74585.TRAINING_DS; 
+VAR loan_duration;
+ 
+QUIT;
+
+TITLE 'STEP 5 - (After imputation) List the details of the loan applicants who submitted their loan applications without loan duration';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_duration IS MISSING or t.loan_duration eq . );
+ 
+QUIT;
+
+/* impute the missing values found in the Continious variable: LOAN_HISTORY*/
+/*****************************************************************************/
+
+TITLE 'STEP 1 - List the details of the loan applicants who submitted their loan applications without loan history';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_history IS MISSING or t.loan_history eq . );
+ 
+QUIT;
+
+TITLE 'STEP 2 - Count the number of loan applicants who submitted their loan applications without loan_history';
+ 
+PROC SQL;
+ 
+SELECT COUNT(*) Label = 'Number of loan applicants'
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_history IS MISSING or t.loan_history eq . );
+ 
+QUIT;
+ 
+/* Make a backup copy of the dataset LIB74585.TRAINING_DS */
+
+PROC SQL;
+
+CREATE TABLE LIB74585.TRAINING_BK_DS AS
+SELECT *
+FROM  LIB74585.TRAINING_DS;
+
+QUIT;
+
+/* STEP 4: Impute the missing values found in the variable - loan_history */;
+ 
+PROC STDIZE DATA = LIB74585.TRAINING_DS REPONLY
+ 
+METHOD = MEAN OUT = LIB74585.TRAINING_DS; 
+VAR loan_history;
+ 
+QUIT;
+
+TITLE 'STEP 5 - (After imputation) List the details of the loan applicants who submitted their loan applications without loan history';
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TRAINING_DS t
+WHERE ( t.loan_history IS MISSING or t.loan_history eq . );
+ 
+QUIT;
+
+/* analysis of the categorical variables using SAS MACRO */
+/*MACRO Begins here*/
+
+OPTIONS MCOMPILENOTE=ALL;
+%MACRO MMACRO_UVA_TRAINING_DS(ptitle, pvariable,pdataset);
+TITLE &ptitle;
+ 
+PROC FREQ DATA = &pdataset;
+ 
+TABLE &pvariable;
+ 
+RUN;
+%MEND  MMACRO_UVA_TRAINING_DS;
+/* MACRO Ends here */
+
+/* To call the SAS MACRO */
+
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - GENDER using SAS MACRO',GENDER,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable -  FAMILY_MEMBERS using SAS MACRO',FAMILY_MEMBERS,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - LOAN_LOCATION using SAS MACRO',LOAN_LOCATION,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - LOAN_HISTORY SAS MACRO',LOAN_HISTORY,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - LOAN_APPROVAL_STATUS using SAS MACRO',LOAN_APPROVAL_STATUS,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - MARITAL_STATUS using SAS MACRO',MARITAL_STATUS,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - QUALIFICATION using SAS MACRO',QUALIFICATION,LIB74585.TESTING_DS);
+%MMACRO_UVA_TRAINING_DS('Univariate Analysis of categorical variable - EMPLOYMENT using SAS MACRO', EMPLOYMENT,LIB74585.TESTING_DS);
+
+/* SAS MACRO begins here */
+OPTIONS MCOMPILENOTE=ALL;
+%MACRO MACRO_UVA_CONTI_VARI(ptitle,pconti_vari,pdataset);
+TITLE &ptitle;
+PROC MEANS DATA =  &pdataset N NMISS MIN MAX MEAN MEDIAN STD;
+VAR &pconti_vari;
+RUN;
+%MEND MACRO_UVA_CONTI_VARI;
+/*SAS MACRO ends here*/
+
+/* To call the SAS MACRO - MACRO_UVA_CONTI_VARI */
+%MACRO_UVA_CONTI_VARI('Univariate Analysis of the Continuous variable - LOAN_DURATION',
+loan_duration,LIB74585.TESTING_DS);
+%MACRO_UVA_CONTI_VARI('Univariate Analysis of the Continuous variable - LOAN_AMOUNT',
+loan_amount,LIB74585.TESTING_DS);
+%MACRO_UVA_CONTI_VARI('Univariate Analysis of the Continuous variable - CANDIDATE_INCOME',
+candidate_income,LIB74585.TESTING_DS);
+%MACRO_UVA_CONTI_VARI('Univariate Analysis of the Continuous variable - GUARANTEE_INCOME',
+guarantee_income,LIB74585.TESTING_DS);
+
+
+/* SAS MACRO begins here */
+OPTIONS MCOMPILENOTE=ALL;
+%MACRO MACRO_BVA_CATE_CATE(ptitle1,ptitle2,pcate_vari1,pcate_vari2,pdataset);
+TITLE1 &ptitle1;
+TITLE2 &ptitle2; 
+PROC FREQ DATA=&pdataset;
+TABLE &pcate_vari1 * &pcate_vari2/ PLOTS=FREQPLOT(TWOWAY=STACKED SCALE=GROUPPCT);
+RUN;
+%MEND MACRO_BVA_CATE_CATE;
+*SAS MACRO ends here */
+
+/* To call the SAS MACRO - MACRO_BVA_CATE_CATE */
+%MACRO_BVA_CATE_CATE('Bivariate Analysis of the variables','GENDER Vs LOAN LOCATION',
+gender,loan_location,LIB74585.TESTING_DS);
+%MACRO_BVA_CATE_CATE('Bivariate Analysis of the variables','GENDER Vs FAMILY_MEMBERS',
+gender,family_members,LIB74585.TESTING_DS);
+%MACRO_BVA_CATE_CATE('Bivariate Analysis of the variables','GENDER Vs QUALIFICATION',
+gender,qualification,LIB74585.TESTING_DS);
+%MACRO_BVA_CATE_CATE('Bivariate Analysis of the variables','GENDER Vs LOAN_HISTORY',
+gender,loan_history,LIB74585.TESTING_DS);
+
+/* Bivariate analysis of variables using MACRO*/
+ 
+/* SAS MACRO begins here */
+OPTIONS MCOMPILENOTE=ALL;
+%MACRO MACRO_BVA_CATE_CONTI(ptitle1,ptitle2,pcate_vari,pconti_vari,pdataset);
+TITLE1 &ptitle1;
+TITLE2 &ptitle2;
+ 
+PROC MEANS DATA = &pdataset;
+    CLASS &pcate_vari;  /* It is a Categorical variable*/
+    VAR &pconti_vari; /* It is a Numeric/Continuous variable */
+RUN;
+ 
+%MEND MACRO_BVA_CATE_CONTI;
+/* SAS MACRO ends here */
+
+/* To call the SAS MACRO - MACRO_BVA_CATE_CONTI */
+%MACRO_BVA_CATE_CONTI('Bivariate Analysis of the variables',
+'Categorical variable Vs Continuous variable',
+loan_location,
+candidate_income,
+LIB74585.TESTING_DS);
+%MACRO_BVA_CATE_CONTI('Bivariate Analysis of the variables',
+'Categorical variable Vs Continuous variable',
+qualification,
+loan_duration,
+LIB74585.TESTING_DS);
+%MACRO_BVA_CATE_CONTI('Bivariate Analysis of the variables',
+'Categorical variable Vs Continuous variable',
+qualification,
+loan_amount,
+LIB74585.TESTING_DS);
+
+/* L R (ML) model create */
+PROC LOGISTIC DATA = LIB74585.TRAINING_DS OUTMODEL = LIB74585.TRAINING_DS_LR_MODEL;  
+CLASS  
+    GENDER  
+    MARITAL_STATUS  
+    FAMILY_MEMBERS  
+    QUALIFICATION  
+    EMPLOYMENT 
+    LOAN_HISTORY  
+    LOAN_LOCATION    
+    ;
+MODEL LOAN_APPROVAL_STATUS = /* LOAN_APPROVAL_STATUS is a dependent variable */
+    GENDER  
+    MARITAL_STATUS  
+    FAMILY_MEMBERS  
+    QUALIFICATION  
+    EMPLOYMENT  
+    CANDIDATE_INCOME  
+    GUARANTEE_INCOME  
+    LOAN_AMOUNT  
+    LOAN_DURATION   
+    LOAN_HISTORY  
+    LOAN_LOCATION  
+    /* Above all are independent variables */
+    ;
+OUTPUT OUT = LIB74585.TRAINING_OUT_DS P = PPRED_PROB;
+/*PRED_PROB ->Predicted probability - variable to hold predicted probability */
+ 
+RUN;
+ 
+/*************************************************************
+Predict the loan approval status using the model created 
+  
+*************************************************************/
+ 
+PROC LOGISTIC INMODEL = LIB74585.TRAINING_DS_LR_MODEL; /* It is the model the data scientist created */
+ 
+SCORE DATA = LIB74585.TESTING_DS /*TESTING_DS*/
+OUT = LIB74585.TESTING_LAS_PREDICTED_DS; /*Location of output */
+ 
+QUIT;
+
+/* List the details of loan approval status predicted */
+TITLE ' List the details of loan approval status predicted ';
+FOOTNOTE '------------------------------------------END--------------------';
+
+PROC SQL;
+
+SELECT *
+FROM LIB74585.TESTING_LAS_PREDICTED_DS;
+
+QUIT;
+
+/* DATA VISUALIZATION */
+
+/* SAS Simple Bar Chart using SAS Codes */
+ 
+PROC SGPLOT DATA = LIB74585.TESTING_LAS_PREDICTED_DS;
+VBAR loan_location;
+TITLE 'Loan Applicants by Loan Location';
+RUN;
+
+/***********************************************
+Stacked Bar chart 
+The groups were stacked one above the other 
+************************************************/
+TITLE 'Number of famiily members by loan location';
+ 
+PROC SGPLOT data = LIB74585.TESTING_LAS_PREDICTED_DS;
+ 
+vbar family_members /group = loan_location groupdisplay = cluster;
+Label family_members = 'Number of family members';
+ 
+RUN;
+
+/* Clusterd bar chart
+the variable can be stacked next to each other that is side by side */ 
+
+PROC SGPLOT DATA = LIB74585.TESTING_LAS_PREDICTED_DS;
+VBAR family_members / GROUP = loan_location GROUPDISPLAY = CLUSTER;
+TITLE ' Number of family members by loan location ';
+RUN;
+
+/******************************************************************************************
+Pie Chart
+A pie-chart is a representation of values as slices of a circle with different colors
+*****************************************************************************************/
+TITLE 'Loan approval status by loan location';
+PROC GCHART DATA = LIB74585.TESTING_LAS_PREDICTED_DS;
+pie3d I_LOAN_APPROVAL_STATUS;  
+RUN;
+QUIT;
+ 
+ 
+/******************************************************************************************
+Pie Chart
+A pie-chart is a representation of values as slices of a circle with different colors
+*****************************************************************************************/ 
+GOPTIONS RESET=ALL BORDER;
+TITLE 'family_members vs loan location';
+PROC GCHART DATA=LIB74585.TESTING_LAS_PREDICTED_DS;
+pie family_members / detail=loan_location
+detail_percent=best
+detail_value=none
+detail_slice=best
+detail_threshold=2
+legend;
+RUN;
+
+/*********************************************************/
+Generate report using SAS ODS - Output Delivery System
+**********************************************************/
+ODS HTML CLOSE;
+ODS PDF CLOSE;
+/* Determine the physical location of pdf */ 
+ODS PDF FILE = "/home/u63524373/MY_DAP_FT_NOV_2023_ TP074585/LFIBANK_LASR.pdf";
+OPTIONS NODATE;
+TITLE1 'Bank Loan Approval Status Predicted';
+TITLE2 'APU,TPM';
+PROC REPORT DATA = LIB74585.TESTING_LAS_PREDICTED_DS NOWINDOWS; 
+BY SME_LOAN_ID_NO; 
+DEFINE SME_LOAN_ID_NO / GROUP 'LOAN ID';
+DEFINE GENDER / GROUP 'GENDER NAME';
+DEFINE MARITAL_STATUS / GROUP 'MARITAL STATUS';
+DEFINE FAMILY_MEMBERS / GROUP 'FAMILY MEMBERS';
+DEFINE CANDIDATE_INCOME / GROUP 'MONTHLY INCOME';
+DEFINE GUARANTEE_INCOME / GROUP "CO-APPLICANT'S INCOME";
+DEFINE LOAN_AMOUNT / GROUP 'LOAN AMOUNT';
+DEFINE LOAN_DURATION / GROUP 'LOAN DURATION';
+DEFINE LOAN_HISTORY / GROUP 'LOAN HISTORY';
+DEFINE LOAN_LOCATION / GROUP 'LOAN LOCATION';
+FOOTNOTE '---End of Report----';
+RUN;
+
+/**************************************************************
+Generate report carrying the loan approval status (without using SAS ODS)
+**************************************************************/
+/*******************************************************************************
+STEP 1: Sort the data found in the dataset - LIB51510.TESTING_LAS_PREDICTED_DS 
+********************************************************************************/
+ 
+OPTIONS NODATE;
+ 
+PROC SORT DATA = LIB74585.TESTING_LAS_PREDICTED_DS OUT = LIB74585.TESTING_LAS_PREDICTED_SORTED_DS;
+ 
+BY loan_location 
+   sme_loan_id_no;
+   
+RUN;
+ 
+/********************************************************************
+STEP 2: List the details of the data sorted 
+*********************************************************************/
+ 
+PROC SQL;
+ 
+SELECT *
+FROM LIB74585.TESTING_LAS_PREDICTED_SORTED_DS;
+ 
+QUIT;
+
+/******************************************************
+STEP 3:  Generate the report 
+******************************************************/
+ 
+PROC PRINT DATA = LIB74585.TESTING_LAS_PREDICTED_SORTED_DS SPLIT = '*';
+id loan_location;
+by loan_location;
+var sme_loan_id_no
+     candidate_income
+     loan_amount
+     loan_duration
+     i_loan_approval_status;
+sum candidate_income loan_amount;  
+label loan_location = 'LOAN LOCATION*======='
+       sme_loan_id_no = 'LOAN ID*======='
+       candidate_income = 'CANDIDATE INCOME*================'
+       loan_amount = 'LOAN AMOUNT*==========='
+       loan_duration = 'LOAN DURATION*============='
+       i_loan_approval_status ='LOAN APPROVAL STATUS*===================='; 
+TITLE1 'Bank Loan Approval Status Predicted';
+TITLE2 'LFIBANK,TPM';
+ 
+RUN;
